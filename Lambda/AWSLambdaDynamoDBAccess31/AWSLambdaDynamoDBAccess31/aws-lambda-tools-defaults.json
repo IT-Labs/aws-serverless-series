@@ -1,0 +1,27 @@
+
+{
+    "Information" : [
+        "This file provides default values for the deployment wizard inside Visual Studio and the AWS Lambda commands added to the .NET Core CLI.",
+        "To learn more about the Lambda commands with the .NET Core CLI execute the following command at the command line in the project root directory.",
+        "dotnet lambda help",
+        "All the command line options for the Lambda command can be specified in this file."
+    ],
+    "profile"     : "kole.vasilevski",
+    "region"      : "us-east-1",
+    "configuration" : "Release",
+    "framework"     : "netcoreapp3.1",
+    "function-runtime" : "dotnetcore3.1",
+    "function-memory-size" : 256,
+    "function-timeout"     : 30,
+    "function-handler"     : "AWSLambdaDynamoDBAccess31::AWSLambdaDynamoDBAccess31.Function::FunctionHandlerAsync",
+    "function-name"        : "AWSLambdaDynamoDBAccess31",
+    "function-description" : "AWSLambda to DynamoDBA ccess 3.1",
+    "package-type"         : "Zip",
+    "function-role"        : "arn:aws:iam::624395842874:role/LambdaToDynamoDBFullAccessRole",
+    "function-architecture" : "x86_64",
+    "tracing-mode"          : "PassThrough",
+    "environment-variables" : "",
+    "image-tag"             : "",
+    "function-subnets"      : "",
+    "function-security-groups" : ""
+}
