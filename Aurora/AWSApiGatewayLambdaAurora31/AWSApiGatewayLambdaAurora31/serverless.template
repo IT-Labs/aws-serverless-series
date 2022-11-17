@@ -1,0 +1,118 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Transform": "AWS::Serverless-2016-10-31",
+  "Description": "AWS Serverless API that exposes the add, remove and get operations for a Postging platform using Amazon Aurora.",
+  "Resources": {
+    "GetPosts": {
+      "Type": "AWS::Serverless::Function",
+      "Properties": {
+        "Handler": "AWSApiGatewayLambdaAurora31::AWSApiGatewayLambdaAurora31.Functions::GetPostsAsync",
+        "Runtime": "dotnetcore3.1",
+        "CodeUri": "",
+        "Description": "Function to get a list of Posts",
+        "MemorySize": 256,
+        "Timeout": 30,
+        "Role": null,
+        "Policies": [
+          "AWSLambda_FullAccess",
+          "AmazonRDSFullAccess",
+          "AWSLambdaVPCAccessExecutionRole"
+        ],
+        "Events": {
+          "PutResource": {
+            "Type": "Api",
+            "Properties": {
+              "Path": "/posts",
+              "Method": "GET"
+            }
+          }
+        }
+      }
+    },
+    "GetPost": {
+      "Type": "AWS::Serverless::Function",
+      "Properties": {
+        "Handler": "AWSApiGatewayLambdaAurora31::AWSApiGatewayLambdaAurora31.Functions::GetPostAsync",
+        "Runtime": "dotnetcore3.1",
+        "CodeUri": "",
+        "Description": "Function to get a single Post",
+        "MemorySize": 256,
+        "Timeout": 30,
+        "Role": null,
+        "Policies": [
+          "AWSLambda_FullAccess",
+          "AmazonRDSFullAccess",
+          "AWSLambdaVPCAccessExecutionRole"
+        ],
+        "Events": {
+          "PutResource": {
+            "Type": "Api",
+            "Properties": {
+              "Path": "/posts/{Id}",
+              "Method": "GET"
+            }
+          }
+        }
+      }
+    },
+    "AddPost": {
+      "Type": "AWS::Serverless::Function",
+      "Properties": {
+        "Handler": "AWSApiGatewayLambdaAurora31::AWSApiGatewayLambdaAurora31.Functions::AddPostAsync",
+        "Runtime": "dotnetcore3.1",
+        "CodeUri": "",
+        "Description": "Function to add a Post",
+        "MemorySize": 256,
+        "Timeout": 30,
+        "Role": null,
+        "Policies": [
+          "AWSLambda_FullAccess",
+          "AmazonRDSFullAccess",
+          "AWSLambdaVPCAccessExecutionRole"
+        ],
+        "Events": {
+          "PutResource": {
+            "Type": "Api",
+            "Properties": {
+              "Path": "/posts",
+              "Method": "POST"
+            }
+          }
+        }
+      }
+    },
+    "RemovePost": {
+      "Type": "AWS::Serverless::Function",
+      "Properties": {
+        "Handler": "AWSApiGatewayLambdaAurora31::AWSApiGatewayLambdaAurora31.Functions::RemovePostAsync",
+        "Runtime": "dotnetcore3.1",
+        "CodeUri": "",
+        "Description": "Function to remove a Post",
+        "MemorySize": 256,
+        "Timeout": 30,
+        "Role": null,
+        "Policies": [
+          "AWSLambda_FullAccess",
+          "AmazonRDSFullAccess",
+          "AWSLambdaVPCAccessExecutionRole"
+        ],
+        "Events": 
+        {
+          "PutResource": {
+            "Type": "Api",
+            "Properties": {
+              "Path": "/posts/{Id}",
+              "Method": "DELETE"
+            }
+          }
+        }
+      }
+    }
+  },
+  "Outputs" : {
+    "HttpApiURL" : {
+        "Description" : "API endpoint URL for the environment",
+        "Value" : { "Fn::Sub" : "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/posts" }
+    }
+  }
+}
