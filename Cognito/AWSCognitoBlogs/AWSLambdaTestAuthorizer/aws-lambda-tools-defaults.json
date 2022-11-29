@@ -1,0 +1,27 @@
+
+{
+    "Information" : [
+        "This file provides default values for the deployment wizard inside Visual Studio and the AWS Lambda commands added to the .NET Core CLI.",
+        "To learn more about the Lambda commands with the .NET Core CLI execute the following command at the command line in the project root directory.",
+        "dotnet lambda help",
+        "All the command line options for the Lambda command can be specified in this file."
+    ],
+    "profile"     : "kole.vasilevski",
+    "region"      : "us-east-1",
+    "configuration" : "Release",
+    "framework"     : "netcoreapp3.1",
+    "function-runtime" : "dotnetcore3.1",
+    "function-memory-size" : 256,
+    "function-timeout"     : 30,
+    "function-handler"     : "AWSLambdaTestAuthorizer::AWSLambdaTestAuthorizer.Function::FunctionHandler",
+    "function-name"        : "AWSLambdaTestAuthorizer",
+    "function-description" : "AWS Lambda Test Authorizer",
+    "package-type"         : "Zip",
+    "function-role"        : "arn:aws:iam::624395842874:role/lambda_exec_AWSLambdaTestAuthorizer",
+    "function-architecture" : "x86_64",
+    "function-subnets"      : "",
+    "function-security-groups" : "",
+    "tracing-mode"             : "PassThrough",
+    "environment-variables"    : "",
+    "image-tag"                : ""
+}
